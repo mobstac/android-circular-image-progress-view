@@ -3,10 +3,17 @@
 
 ![Demo](/media/demo.gif)
 
+## Add to your project
+
+```groovy
+compile 'com.mobstac.circularimageprogress:CircularImageProgressView:0.1.2'
+```
+
+[ ![Download](https://api.bintray.com/packages/mobstac/maven/CircularImageProgressView/images/download.svg) ](https://bintray.com/mobstac/maven/CircularImageProgressView/_latestVersion) 
 
 ## Usage
 
-#### 1. Add the view to XML
+#### Add the view to XML
 
 ```xml
 <com.mobstac.circularimageprogressview.CircularImageProgressView

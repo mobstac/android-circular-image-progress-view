@@ -1,4 +1,4 @@
-package com.mobstac.circularimageprogressview;
+package com.mobstac.circularimageprogress;
 
 import org.junit.Test;
 

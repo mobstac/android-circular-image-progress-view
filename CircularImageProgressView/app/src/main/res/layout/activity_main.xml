@@ -15,15 +15,13 @@
         android:layout_margin="16dp"
         android:src="@drawable/ic_action_name" />
 
-    <com.mobstac.circularimageprogressview.CircularImageProgressView
+    <com.mobstac.circularimageprogress.CircularImageProgressView
         android:id="@+id/circular_image_progress"
         android:layout_width="160dp"
         android:layout_height="160dp"
         android:layout_centerInParent="true"
         app:image="@mipmap/ic_launcher"
         app:max="100" />
-
-    <!--bleh-->
 
     <SeekBar
         android:id="@+id/seek_progress"

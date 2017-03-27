@@ -1,4 +1,4 @@
-package com.mobstac.circularimageprogressview;
+package com.mobstac.circularimageprogress;
 
 import android.content.Context;
 import android.content.res.TypedArray;

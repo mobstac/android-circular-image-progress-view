@@ -1,6 +1,5 @@
 package com.mobstac.circularprogressdemo;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
@@ -9,7 +8,7 @@ import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.mobstac.circularimageprogressview.CircularImageProgressView;
+import com.mobstac.circularimageprogress.CircularImageProgressView;
 
 public class MainActivity extends AppCompatActivity {
 
