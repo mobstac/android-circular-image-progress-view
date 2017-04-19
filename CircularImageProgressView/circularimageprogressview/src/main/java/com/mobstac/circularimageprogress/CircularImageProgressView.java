@@ -94,6 +94,11 @@ public class CircularImageProgressView extends View {
         setProgress(mProgress);
     }
 
+    /**
+     * Set the progress to the provided value
+     *
+     * @param progress The value for the new progress
+     */
     public void setProgress(final int progress) {
         if (mProgressHidden || progress > mProgressMax || progress < PROGRESS_MIN)
             return;
@@ -102,23 +107,44 @@ public class CircularImageProgressView extends View {
         invalidate();
     }
 
+    /**
+     * Remove the tint from the image
+     */
     public void clearImageTint() {
         mImageFilter = null;
         initImagePaint();
         invalidate();
     }
 
+    /**
+     * Will tint the Image at the centre
+     *
+     * @param color The colour of the tint
+     */
     public void setImageTint(int color) {
         mImageFilter = new PorterDuffColorFilter(color, PorterDuff.Mode.SRC_ATOP);
         initImagePaint();
         invalidate();
     }
 
+    /**
+     * Set the image at the centre
+     *
+     * @param resource Drawable ID of the image resource
+     */
     public void setImageResource(int resource) {
         mImageResource = resource;
+        if (isValidImageResource(mContext, resource))
+            mBitmap = getBitmapFromVectorDrawable(mContext, mImageResource);
+        else {
+            mBitmap = null;
+        }
         invalidate();
     }
 
+    /**
+     * @return Current progress
+     */
     public int getProgress() {
         return mCurrentProgress;
     }
@@ -135,7 +161,7 @@ public class CircularImageProgressView extends View {
 
         //draw image in the center
         if (!mImageHidden)
-            if (isValidImageResource(mContext, mImageResource) && mBitmap != null)
+            if (mBitmap != null)
                 canvas.drawBitmap(mBitmap, null, mImgRect, mImagePaint);
     }
 
@@ -183,6 +209,11 @@ public class CircularImageProgressView extends View {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 
+    /**
+     * Set the width of the circular progress arc
+     *
+     * @param width Must be between {@link #STROKE_WIDTH_MIN} and {@link #STROKE_WIDTH_MAX}
+     */
     public void setCircleWidth(int width) {
         if (width < STROKE_WIDTH_MIN)
             mStrokeWidth = STROKE_WIDTH_MIN;
@@ -194,12 +225,28 @@ public class CircularImageProgressView extends View {
         requestLayout();
     }
 
+    /**
+     * @return The width of the progress circle.
+     * Possible value will be between {@link #STROKE_WIDTH_MIN} and {@link #STROKE_WIDTH_MAX}
+     */
     public int getCircleWidth() {
         return mStrokeWidth;
     }
 
+    /**
+     * @return Maximum progress, default is 100
+     */
     public int getMax() {
         return mProgressMax;
+    }
+
+    /**
+     * Set the maximum possible value for the progress bar
+     *
+     * @param max The maximum progress
+     */
+    public void setMax(int max) {
+        mProgressMax = max;
     }
 
 
@@ -228,32 +275,55 @@ public class CircularImageProgressView extends View {
         return bitmap;
     }
 
+    /**
+     * Hide the circular progress arc.
+     * This does not affect the visibility of other parts of the view
+     */
     public void hideProgress() {
         mProgressHidden = true;
         invalidate();
     }
 
+    /**
+     * Make the circular progress arc visible.
+     * This does not affect the visibility of other parts of the view
+     */
     public void showProgress() {
         mProgressHidden = false;
         invalidate();
     }
 
+    /**
+     * Hide the image, this does not affect the visibility of other parts of the view
+     */
     public void hideImage() {
         mImageHidden = true;
         invalidate();
     }
 
+    /**
+     * Make the image visible, this does not affect the visibility of other parts of the view
+     */
     public void showImage() {
         mImageHidden = false;
         invalidate();
     }
 
+    /**
+     * @param context Application context
+     * @return THe app's accent color, as defined in the app's theme
+     */
     private int getAccentColor(Context context) {
         final TypedValue value = new TypedValue();
         context.getTheme().resolveAttribute(R.attr.colorAccent, value, true);
         return value.data;
     }
 
+    /**
+     * @param context    Application context
+     * @param resourceId Resource ID of the drawable
+     * @return Whether the provided resource is a valid drawable
+     */
     private boolean isValidImageResource(Context context, int resourceId) {
         String resourceName = String.valueOf(resourceId);
         return getResources().getIdentifier(resourceName, "drawable", context.getPackageName()) > 0;
@@ -273,6 +343,10 @@ public class CircularImageProgressView extends View {
         );
     }
 
+    /**
+     * Initialise the paint for the circular progress bar,
+     * includes both the background arc and the progress arc.
+     */
     private void initArcPaint() {
         mArcPaintBackground = new Paint() {
             {
@@ -299,6 +373,9 @@ public class CircularImageProgressView extends View {
         };
     }
 
+    /**
+     * Initialise the paint for the image
+     */
     private void initImagePaint() {
         mImagePaint = new Paint() {
             {

@@ -6,7 +6,7 @@
 ## Add to your project
 
 ```groovy
-compile 'com.mobstac.circularimageprogress:CircularImageProgressView:0.1.2'
+compile 'com.mobstac.circularimageprogress:CircularImageProgressView:0.1.3'
 ```
 
 [ ![Download](https://api.bintray.com/packages/mobstac/maven/CircularImageProgressView/images/download.svg) ](https://bintray.com/mobstac/maven/CircularImageProgressView/_latestVersion) 
@@ -21,7 +21,7 @@ compile 'com.mobstac.circularimageprogress:CircularImageProgressView:0.1.2'
         android:layout_width="160dp"
         android:layout_height="160dp"
         app:image="@drawable/my_icon"
-        app:max_progress="100" />
+        app:max="100" />
 ```
 
 ## Configurable properties
@@ -60,6 +60,8 @@ circularImageProgressView.setProgress(40);
 circularImageProgressView.setImageTint(Color.WHITE);
 //Set image resource
 circularImageProgressView.setImageResource(R.drawable.ic_action_name);
+//Set max progress
+circularImageProgressView.setMax(50);
 //Get current progress
 circularImageProgressView.getProgress();
 //Get max progress
