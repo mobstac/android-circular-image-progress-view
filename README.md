@@ -16,7 +16,7 @@ compile 'com.mobstac.circularimageprogress:CircularImageProgressView:0.1.3'
 #### Add the view to XML
 
 ```xml
-<com.mobstac.circularimageprogressview.CircularImageProgressView
+<com.mobstac.circularimageprogress.CircularImageProgressView
         android:id="@+id/circular_image_progress"
         android:layout_width="160dp"
         android:layout_height="160dp"
@@ -29,7 +29,7 @@ compile 'com.mobstac.circularimageprogress:CircularImageProgressView:0.1.3'
 #### In `xml`
 
 ```xml
-<com.mobstac.circularimageprogressview.CircularImageProgressView
+<com.mobstac.circularimageprogress.CircularImageProgressView
         <!--Set max progress-->
         app:max="100"
         <!--Set current progress-->
