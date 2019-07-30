@@ -20,7 +20,7 @@
         android:layout_width="160dp"
         android:layout_height="160dp"
         android:layout_centerInParent="true"
-        app:image="@mipmap/ic_launcher"
+
         app:max="100" />
 
     <SeekBar

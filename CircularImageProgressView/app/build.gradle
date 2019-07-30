@@ -28,4 +28,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:design:25.3.1'
     compile project(':circularimageprogressview')
+    compile "com.squareup.picasso:picasso:2.5.2"
+    compile 'jp.wasabeef:picasso-transformations:2.1.0'
 }

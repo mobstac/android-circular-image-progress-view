@@ -1,14 +1,22 @@
 package com.mobstac.circularprogressdemo;
 
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.mobstac.circularimageprogress.CircularImageProgressView;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
+
+import jp.wasabeef.picasso.transformations.CropCircleTransformation;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,6 +37,28 @@ public class MainActivity extends AppCompatActivity {
         progressText = (TextView) findViewById(R.id.value_progress);
         widthText = (TextView) findViewById(R.id.value_width);
         fab = (FloatingActionButton) findViewById(R.id.play_fab);
+
+        Picasso.with(this).load("https://b.zmtcdn.com/data/collections/e40960514831cb9b74c552d69eceee0f_1418387628_l.jpg").resize(100,100).centerCrop().transform(new CropCircleTransformation()).into(new Target() {
+            @Override
+            public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                Log.d("MainAct","bitmap");
+                circularImageProgressView.setImage(bitmap);
+            }
+
+            @Override
+            public void onBitmapFailed(Drawable errorDrawable) {
+                Log.d("MainAct","bitmap failed");
+
+            }
+
+            @Override
+            public void onPrepareLoad(Drawable placeHolderDrawable) {
+                Log.d("MainAct","bitmap prepare");
+                circularImageProgressView.setImageResource(R.mipmap.ic_launcher);
+
+            }
+        });
+
 
         seekProgress.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
