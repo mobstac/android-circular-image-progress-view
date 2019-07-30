@@ -38,22 +38,26 @@ public class MainActivity extends AppCompatActivity {
         widthText = (TextView) findViewById(R.id.value_width);
         fab = (FloatingActionButton) findViewById(R.id.play_fab);
 
-        Picasso.with(this).load("https://b.zmtcdn.com/data/collections/e40960514831cb9b74c552d69eceee0f_1418387628_l.jpg").resize(100,100).centerCrop().transform(new CropCircleTransformation()).into(new Target() {
+        /*
+        While using Picasso in CircularImageProgressView size should not exceed 100 dp.
+        For circular image use transformation in picasso.
+         */
+        Picasso.with(this).load("https://b.zmtcdn.com/data/collections/e40960514831cb9b74c552d69eceee0f_1418387628_l.jpg").resize(100, 100).centerCrop().transform(new CropCircleTransformation()).into(new Target() {
             @Override
             public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-                Log.d("MainAct","bitmap");
-                circularImageProgressView.setImage(bitmap);
+                Log.d("MainAct", "bitmap");
+                circularImageProgressView.setImageBitmap(bitmap);
             }
 
             @Override
             public void onBitmapFailed(Drawable errorDrawable) {
-                Log.d("MainAct","bitmap failed");
+                Log.d("MainAct", "bitmap failed");
 
             }
 
             @Override
             public void onPrepareLoad(Drawable placeHolderDrawable) {
-                Log.d("MainAct","bitmap prepare");
+                Log.d("MainAct", "bitmap prepare");
                 circularImageProgressView.setImageResource(R.mipmap.ic_launcher);
 
             }
