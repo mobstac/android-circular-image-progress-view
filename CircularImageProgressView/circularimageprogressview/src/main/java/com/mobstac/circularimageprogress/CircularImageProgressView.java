@@ -42,6 +42,7 @@ public class CircularImageProgressView extends View {
     private final int STROKE_WIDTH_MIN = 5;
     private final int STROKE_WIDTH_MAX = 75;
     private int mStrokeWidth = 15;
+
     private Bitmap mBitmap;
     private boolean mProgressHidden = false, mImageHidden = false;
 
