@@ -385,4 +385,9 @@ public class CircularImageProgressView extends View {
         };
     }
 
+    public void setImageBitmap(Bitmap mBitmap) {
+        this.mBitmap = mBitmap;
+        invalidate();
+    }
+
 }
